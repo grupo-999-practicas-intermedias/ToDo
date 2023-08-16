@@ -1,11 +1,12 @@
 import { generateUUID } from '$lib/genereateUid';
 import { addTodo, deleteTodo, getTodos, updateTodo } from '$lib/server/Api';
+import { URL_SERVER } from "$env/static/private";
 import type { Actions } from './$types';
 import type { Todo } from './interface';
 
 
 export async function load() {
-  const data = await getTodos();
+  const data = await getTodos( URL_SERVER);
   return {
     todos: data == undefined ? [] : data
   }
@@ -26,7 +27,7 @@ export const actions = {
       completed: false
     }
     // send the data to the server
-    const res = addTodo(todo);
+    const res = addTodo(todo, URL_SERVER);
 
     // return the response
     return res
@@ -46,7 +47,7 @@ export const actions = {
 
     console.log("entra aca ?",todo);
 
-    const res = await updateTodo(todo.id, todo);
+    const res = await updateTodo(todo.id, todo, URL_SERVER);
     console.log(res);
     return res
 
@@ -55,7 +56,7 @@ export const actions = {
     const data = await request.formData();
     console.log(data);
     const id = data.get('id')?.toString();
-    const res = await deleteTodo(id);
+    const res = await deleteTodo(id, URL_SERVER);
     console.log(res);
   }
 } 

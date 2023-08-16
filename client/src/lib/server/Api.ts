@@ -11,8 +11,8 @@ async function request(endpoint: string, method: string, body: string = "") {
   })
 }
 
-export async function getTodos() {
-  const res = await fetch("http:///127.0.0.1:3000/todos",{
+export async function getTodos( url: string) {
+  const res = await fetch( url + "/todos",{
     method: 'GET',
   })
 
@@ -28,9 +28,9 @@ export async function getTodos() {
 }
 
 
-export async function addTodo(todo: Todo) {
+export async function addTodo(todo: Todo, url : string) {
 
-  const res = await request("http://127.0.0.1:3000/todos",'POST', JSON.stringify(todo))
+  const res = await request( url + "/todos",'POST', JSON.stringify(todo))
 
   if (res.status !== 200) return {
     status: res.status,
@@ -44,12 +44,9 @@ export async function addTodo(todo: Todo) {
   }
 }
 
-export async function updateTodo(id: any, todo: Todo) {
-
-
-  const url = "http://127.0.0.1:3000/todos/"+id
+export async function updateTodo(id: any, todo: Todo, url : string) {
   
-  const res = await request(url, 'PUT', JSON.stringify(todo))
+  const res = await request(url +"/todos/"+id, 'PUT', JSON.stringify(todo))
 
   if (res.status !== 200) return {
     status: res.status,
@@ -63,10 +60,9 @@ export async function updateTodo(id: any, todo: Todo) {
   }
 }
 
-export async function deleteTodo(id: any) {
-  const url = "http://127.0.0.1:3000/todos/"+id
+export async function deleteTodo(id: any, url : string) {
 
-  const res = await fetch(url, {
+  const res = await fetch(url + "/todos/"+id, {
     method: 'DELETE',
   })
 
