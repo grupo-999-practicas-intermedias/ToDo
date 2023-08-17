@@ -8,15 +8,20 @@
     "dev:server": " cd ./server && go run server.go",
     "build:server": "cd ./server && go build server.go && ./server",
     "dev:client": "cd ./client && npm run dev -- --open",
-    "build:client": "cd ./client && npm run preview"
+    "build:client": "cd ./client && npm run build"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "client",
+    "server"
   ],
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/uuid": "^9.0.2"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-netlify": "^1.0.0-next.88"
   }
 }
