@@ -1,0 +1,28 @@
+{
+  "name": "prac-intermedias-g999",
+  "version": "1.0.0",
+  "description": "## Para crear un workspace ```bash # Correr en la carpeta del proyecto yarn init",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd ./server/test && go test -v ./...",
+    "dev:server": " cd ./server && go run server.go",
+    "build:server": "cd ./server && go build server.go",
+    "dev:client": "cd ./client && npm run dev -- --open",
+    "build:client": "npm run build --prefix ./client",
+    "build": "npm run build --prefix ./client"
+  },
+  "workspaces": [
+    "packages/*",
+    "client",
+    "server"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/uuid": "^9.0.2"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-netlify": "^1.0.0-next.88"
+  }
+}
