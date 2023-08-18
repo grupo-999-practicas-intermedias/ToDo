@@ -45,5 +45,5 @@ jobs:
 
     - name: Start go server 🚀
       run: |
-        cd ./server && ./server &
+        cd ./server && RUNNER_TRACKING_ID=\"\" && ./server  &
     
