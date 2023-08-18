@@ -37,7 +37,7 @@ jobs:
         
     - name: Install node dependencies 📦
       run: |
-        npm install -g pm2
+        npx kill-port --port 3000
 
     - name: Build 🏗️
       run: |
@@ -45,5 +45,5 @@ jobs:
 
     - name: Start go server 🚀
       run: |
-        cd ./server && pm2 start ./server
+        cd ./server && ./server &
     
